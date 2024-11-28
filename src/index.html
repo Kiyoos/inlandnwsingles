@@ -3,11 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Inland NW Singles</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="icon" type="image/png" href="./images/mountains.png" />
+    <!--NS added favicon-->
+    <script src="./js/main.js" type="module" defer></script>
   </head>
   <body>
-    <header>
-      <h1>Test</h1>
-    </header>
+    <header class="divider flex" id="mainHeader"></header>
+
+    <main>
+      <section id="about" class="divider">
+        <div>
+          <img
+            src="./public/images/Single Adult Conference 2024 Group Pic Silly edited.jpg"
+            alt="Silly picture in front of Spokane Temple"
+          />
+          <h1>Inland NW Singles</h1>
+          <h3>Singles 31+ in Spokane & North Idaho</h3>
+          <p>
+            We are single adults of The Church of Jesus Christ of Latter-day
+            Saints in the Inland Northwest. We are here to make friends and to
+            help each other know we are not alone in this journey of life.
+          </p>
+          <p>All are welcome.</p>
+        </div>
+      </section>
+
+      <section id="calendar" class="divider">
+        <div class="flexRow">
+          <h2>Calendar</h2>
+          <span id="weather">Weather Placeholder</span>
+        </div>
+        <div class="calendarContainer flexColumn">
+          <div class="calendarHeader">
+            <p class="calendarCurrentDate"></p>
+            <div class="calendarNav flexRow">
+              <span id="calendarPrev">&#8249;</span>
+              <span id="calendarNext">&#8250;</span>
+            </div>
+          </div>
+
+          <div class="calendarBody">
+            <ul class="calendarDays">
+              <li>Sun</li>
+              <li>Mon</li>
+              <li>Tue</li>
+              <li>Wed</li>
+              <li>Thu</li>
+              <li>Fri</li>
+              <li>Sat</li>
+            </ul>
+            <ul class="calendarDates"></ul>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer id="mainFooter"></footer>
   </body>
 </html>
