@@ -22,6 +22,7 @@
 h1,
 h2,
 h3,
+h4,
 nav a,
 .calendarCurrentDate {
   font-family: 'Belleza', Helvetica, Arial, Lucida, sans-serif;
@@ -36,13 +37,18 @@ h3 {
   color: var(--blue);
 }
 
-#logoLogin > * {
-  /* border: 1px solid red; */
-  margin: 0.5em 1em;
+h4 {
+  font-size: 1.5em;
+  margin: 0;
 }
 
-#logoLogin > button {
-  border: 1px solid var(--blue);
+.center {
+  text-align: center;
+}
+
+/* default Button Style */
+button {
+  border: 1px solid var(--lightblue);
   border-radius: 5em;
   height: 2em;
   padding: 0 1em;
@@ -52,6 +58,23 @@ h3 {
   background-color: var(--blue);
   box-shadow: 0px 2px 5px var(--lightBlue);
 }
+
+#logoLogin > * {
+  /* border: 1px solid red; */
+  margin: 0.5em 1em;
+}
+
+/* #logoLogin > button {
+  border: 1px solid var(--blue);
+  border-radius: 5em;
+  height: 2em;
+  padding: 0 1em;
+  font-size: large;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--blue);
+  box-shadow: 0px 2px 5px var(--lightBlue);
+} */
 
 #logoLogin img {
   /* border: 1px solid red; */
@@ -114,11 +137,7 @@ section > div {
   box-shadow: 1px 2px 5px var(--lightBlue);
 }
 
-footer {
-  margin-top: 1em;
-}
-
-/* Calendar */
+/* Calendar Styling */
 
 .calendarContainer {
   /* border: 1px solid red; */
@@ -147,7 +166,7 @@ footer {
   line-height: 38px;
   border-radius: 50%;
   user-select: none;
-  color: #aeabab;
+  color: var(--green);
   font-size: 3rem;
 }
 
@@ -212,4 +231,80 @@ footer {
 
 .calendarDates li:not(.active):hover::before {
   background: #e4e1e1;
+}
+/* end of Calendar */
+
+/* Activity Styling */
+
+.activityContainer {
+  border: 1px solid var(--blue);
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px var(--lightBlue);
+}
+
+.activityContainer > div {
+  /* border: 1px solid red; */
+  margin: 1em;
+}
+
+.activityFavorite {
+  /* border: 1px solid blue; */
+  margin: 0;
+  height: 50px;
+  font-size: 60px;
+  line-height: 40px;
+  text-align: right;
+  color: var(--tan);
+}
+
+.activityImg {
+  /* border: 1px solid red; */
+  width: 100%;
+  margin: 5% auto;
+}
+
+.activitySummary {
+  margin: 0.5em 0;
+}
+
+.activitySummary {
+  align-items: start;
+}
+
+.activitySummary p {
+  /* border: 1px solid red; */
+  margin: 0.5em 0;
+  /* text-align: center; */
+}
+
+.building {
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.activitySummary > button {
+  border: 1px solid var(--lightGreen);
+  background-color: var(--green);
+  /* margin-left: 30%; */
+}
+/* end of Activities */
+
+/* Newsletter Styles */
+
+#newsletter * {
+  text-align: center;
+}
+
+/* Footer Styles */
+
+footer {
+  margin-top: 1em;
+}
+
+footer button {
+  font-weight: normal;
+  font-size: 0.7em;
+  background-color: var(--green);
+  border: 1px solid var(--lightGreen);
+  width: fit-content;
 }
