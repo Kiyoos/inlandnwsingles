@@ -2,7 +2,7 @@
   "name": "inlandnwsingles",
   "version": "1.0.0",
   "description": "Final Project for WDD 330",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "start": "vite",
     "build": "vite build --emptyOutDir",
@@ -40,7 +40,12 @@
     "last 3 safari versions"
   ],
   "dependencies": {
-    "npm-check-updates": "^17.1.11"
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.6",
+    "express": "^4.21.1",
+    "mongodb": "^6.11.0",
+    "npm-check-updates": "^17.1.11",
+    "validatorjs": "^3.22.1"
   },
   "type": "module"
 }
