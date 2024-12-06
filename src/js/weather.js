@@ -1,4 +1,5 @@
-const apiKey = import.meta.env.VITE_WEATHER_API;
+import 'dotenv/config';
+const apiKey = process.env.VITE_WEATHER_API;
 
 const weatherEl = document.getElementById('weather');
 
