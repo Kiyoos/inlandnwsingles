@@ -1,7 +1,9 @@
+const baseURL = import.meta.env.VITE_BASE_URL;
+
 export async function fetchActivities() {
   try {
     // connect to the activities on mongodb
-    const activitiesURL = `http://localhost:3000/activities`;
+    const activitiesURL = `${baseURL}/activities`;
 
     const response = await fetch(activitiesURL);
     const data = await response.json();
