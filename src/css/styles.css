@@ -59,22 +59,16 @@ button {
   box-shadow: 0px 2px 5px var(--lightBlue);
 }
 
+#logoLogin,
+.weaFav,
+#mainFooter {
+  justify-content: space-between;
+}
+
 #logoLogin > * {
   /* border: 1px solid red; */
   margin: 0.5em 1em;
 }
-
-/* #logoLogin > button {
-  border: 1px solid var(--blue);
-  border-radius: 5em;
-  height: 2em;
-  padding: 0 1em;
-  font-size: large;
-  font-weight: 600;
-  color: #fff;
-  background-color: var(--blue);
-  box-shadow: 0px 2px 5px var(--lightBlue);
-} */
 
 #logoLogin img {
   /* border: 1px solid red; */
@@ -90,7 +84,7 @@ button {
 
 .flexRow {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
 }
 
@@ -237,7 +231,7 @@ section > div {
 /* Activity Styling */
 
 .activityContainer {
-  border: 1px solid var(--blue);
+  border: 1px solid var(--lightblue);
   border-radius: 10px;
   box-shadow: 5px 5px 15px var(--lightBlue);
 }
