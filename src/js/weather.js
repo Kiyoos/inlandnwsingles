@@ -5,7 +5,7 @@ const weatherEl = document.getElementById('weather');
 
 export default async function fetchWeather(zip = 83854) {
   try {
-    // connet to the weather api using a zip code
+    // connect to the weather api using a zip code
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=${apiKey}&units=imperial`;
 
     const response = await fetch(apiUrl);

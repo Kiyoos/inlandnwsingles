@@ -5,7 +5,7 @@ import cors from 'cors';
 import router from './routes/index.js';
 import 'dotenv/config';
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 // export default async function server() {
 app.use(cors());
