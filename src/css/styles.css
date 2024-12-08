@@ -193,7 +193,7 @@ section > div {
 }
 
 .calendarDates li {
-  margin: 1em 0;
+  margin: 16px 0;
   position: relative;
   z-index: 1;
   cursor: pointer;
@@ -205,6 +205,12 @@ section > div {
 
 .calendarDates li.active {
   color: #fff;
+}
+
+.calendarDates li.hasAct {
+  color: red;
+  font-weight: 800;
+  font-size: 1.1em;
 }
 
 .calendarDates li::before {
@@ -226,6 +232,7 @@ section > div {
 .calendarDates li:not(.active):hover::before {
   background: #e4e1e1;
 }
+
 /* end of Calendar */
 
 /* Activity Styling */
@@ -234,6 +241,7 @@ section > div {
   border: 1px solid var(--lightblue);
   border-radius: 10px;
   box-shadow: 5px 5px 15px var(--lightBlue);
+  margin-bottom: 1em;
 }
 
 .activityContainer > div {

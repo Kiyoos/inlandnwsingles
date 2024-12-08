@@ -35,3 +35,18 @@ export async function renderWithTemplate(
     callback(data);
   }
 }
+
+// retrieve data from localstorage
+export function getLocalStorage(key) {
+  return JSON.parse(localStorage.getItem(key));
+}
+
+// save data to local storage
+export function setLocalStorage(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
+}
+
+// triggers a deploy on the render server
+export function serverDeploy() {
+  fetch(import.meta.env.VITE_SERVER_DEPLOY);
+}

@@ -1,10 +1,9 @@
 // import 'dotenv/config';
 const apiKey = import.meta.env.VITE_WEATHER_API;
 
-const weatherEl = document.getElementById('weather');
-
 export default async function fetchWeather(zip = 83854) {
   try {
+    const weatherEl = document.getElementById('weather');
     // connect to the weather api using a zip code
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=${apiKey}&units=imperial`;
 

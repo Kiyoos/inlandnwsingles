@@ -1,3 +1,6 @@
+import { actEvent } from './activities';
+import { getLocalStorage } from './utils.mjs';
+
 let date = new Date();
 let year = date.getFullYear();
 let month = date.getMonth();
@@ -22,6 +25,46 @@ const months = [
   'December',
 ];
 
+// convert string to date
+export function convertDate(data) {
+  return new Date(data);
+}
+
+// get month
+export function monthName(date) {
+  const month = date.getMonth();
+  return months[month];
+}
+
+// get day and suffix (1st, 2nd, 3rd, 4th, etc.)
+export function dayName(date) {
+  const day = date.getDate();
+  let suffix = '';
+  if (day > 3 && day < 21) {
+    suffix = 'th';
+  } else {
+    switch (day % 10) {
+      case 1:
+        suffix = 'st';
+      case 2:
+        suffix = 'nd';
+      case 3:
+        suffix = 'rd';
+      default:
+        suffix = 'th';
+    }
+  }
+  return `${day}${suffix}`;
+}
+
+export function formatTime(date) {
+  return date.toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+  });
+}
+
 // Function to generate the calendar
 export default function calendar() {
   // Get the first day of the month
@@ -36,6 +79,25 @@ export default function calendar() {
   // Get the last date of the previous month
   let monthlastdate = new Date(year, month, 0).getDate();
 
+  const actList = getLocalStorage('act-list');
+  // make array of activity dates and ids
+  let actDates = [];
+  actList.map((data) => {
+    const date = convertDate(data.startTime);
+    const actDay = date.getDate();
+    const actMonth = date.getMonth();
+    const actId = {
+      id: data._id,
+      actDay: actDay,
+      actMonth: actMonth,
+    };
+    actDates.push(actId);
+  });
+
+  actDates.sort((a, b) => a.actDay - b.actDay);
+
+  console.log(actDates);
+
   // Variable to store the generated calendar HTML
   let lit = '';
 
@@ -45,15 +107,30 @@ export default function calendar() {
   }
 
   // Loop to add the dates of the current month
+  let d = 0;
   for (let i = 1; i <= lastdate; i++) {
-    // Check if the current date is today
-    let isToday =
+    // Check if the date is today
+    let isToday = '';
+    let hasAct = '';
+    let actId = '';
+    if (
       i === date.getDate() &&
       month === new Date().getMonth() &&
       year === new Date().getFullYear()
-        ? 'active'
-        : '';
-    lit += `<li class="${isToday}">${i}</li>`;
+    ) {
+      isToday = 'active';
+    }
+    // Check if date has activity
+    if (
+      actDates.find((day) => day.actDay === i) &&
+      actDates.find((aMonth) => aMonth.actMonth === month)
+    ) {
+      actId = actDates[d].id;
+      hasAct = 'hasAct';
+      d++;
+    }
+
+    lit += `<li class="${isToday} ${hasAct}" data-id="${actId}">${i}</li>`;
   }
 
   // Loop to add the first dates of the next month
@@ -66,9 +143,8 @@ export default function calendar() {
 
   // update the HTML of the dates element with the generated calendar
   day.innerHTML = lit;
+  actEvent();
 }
-
-calendar();
 
 // Attach a click event listener to each icon
 preNexIcons.forEach((icon) => {
