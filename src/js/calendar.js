@@ -79,9 +79,9 @@ export default function calendar() {
   // Get the last date of the previous month
   let monthlastdate = new Date(year, month, 0).getDate();
 
-  actStorage();
+  // actStorage();
   const actDates = getLocalStorage('act-cal');
-  console.log(actDates);
+  // console.log(actDates);
 
   // Variable to store the generated calendar HTML
   let lit = '';
