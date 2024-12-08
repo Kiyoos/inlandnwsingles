@@ -9,14 +9,10 @@ export async function fetchActivities() {
   try {
     // connect to the activities on mongodb
     const activitiesURL = `${baseURL}/activities`;
-
     const response = await fetch(activitiesURL);
     data = await response.json();
     console.log(data);
     setLocalStorage('act-list', data);
-
-    // weatherEl.innerHTML = `<img src="https://openweathermap.org/img/w/${data.weather[0].icon}.png">
-    //   <span>${data.main.temp}&#8457;</span>`;
   } catch (error) {
     console.log(error);
   }
@@ -70,6 +66,27 @@ function activityTemplate(data) {
   </div>`;
 }
 
+export function actStorage() {
+  const actList = getLocalStorage('act-list');
+  // make array of activity dates and ids
+  let actDates = [];
+  actList.map((data) => {
+    const date = convertDate(data.startTime);
+    const actDay = date.getDate();
+    const actMonth = date.getMonth();
+    const actId = {
+      id: data._id,
+      actDay: actDay,
+      actMonth: actMonth,
+    };
+    actDates.push(actId);
+  });
+
+  actDates.sort((a, b) => a.actDay - b.actDay);
+
+  setLocalStorage('act-cal', actDates);
+  // console.log(actDates);
+}
 export function actEvent() {
   document.querySelectorAll('.hasAct').forEach((item) => {
     item.addEventListener('click', (event) => {

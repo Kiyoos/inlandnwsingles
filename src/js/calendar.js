@@ -1,4 +1,4 @@
-import { actEvent } from './activities';
+import { actEvent, actStorage } from './activities';
 import { getLocalStorage } from './utils.mjs';
 
 let date = new Date();
@@ -79,23 +79,8 @@ export default function calendar() {
   // Get the last date of the previous month
   let monthlastdate = new Date(year, month, 0).getDate();
 
-  const actList = getLocalStorage('act-list');
-  // make array of activity dates and ids
-  let actDates = [];
-  actList.map((data) => {
-    const date = convertDate(data.startTime);
-    const actDay = date.getDate();
-    const actMonth = date.getMonth();
-    const actId = {
-      id: data._id,
-      actDay: actDay,
-      actMonth: actMonth,
-    };
-    actDates.push(actId);
-  });
-
-  actDates.sort((a, b) => a.actDay - b.actDay);
-
+  actStorage();
+  const actDates = getLocalStorage('act-cal');
   console.log(actDates);
 
   // Variable to store the generated calendar HTML
