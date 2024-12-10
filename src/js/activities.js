@@ -44,7 +44,7 @@ function activityTemplate(data) {
   const time = formatTime(date);
   // creates the activity cards
   return `
-  <div class="flexColumn activityContainer">
+  <div class="gridCont activityContainer">
     <div class="weaFav flexRow">
       <span id="weather" class="flexRow"></span>
       <p class="activityFavorite">&#9734;<!--solid star &#9733;--></p>

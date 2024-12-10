@@ -9,10 +9,9 @@
   --lightTan: rgba(255, 209, 159, 0.5);
 }
 
-/* html {
-  background-image: linear-gradient(#fff, var(--lightBlue));
-  height: 100%;
-} */
+html {
+  min-width: 320px;
+}
 
 * {
   box-sizing: border-box;
@@ -59,20 +58,9 @@ button {
   box-shadow: 0px 2px 5px var(--lightBlue);
 }
 
-#logoLogin,
 .weaFav,
 #mainFooter {
   justify-content: space-between;
-}
-
-#logoLogin > * {
-  /* border: 1px solid red; */
-  margin: 0.5em 1em;
-}
-
-#logoLogin img {
-  /* border: 1px solid red; */
-  max-height: 3em;
 }
 
 .flexColumn {
@@ -88,8 +76,62 @@ button {
   align-items: center;
 }
 
+.gridCont {
+  display: grid;
+}
+
+/* Start Grid Area  */
+
+/* Header Styling */
+header img {
+  grid-area: logo;
+  /* border: 1px solid red; */
+}
+
+header button {
+  grid-area: login;
+  /* border: 1px solid red; */
+}
+
+header nav {
+  grid-area: nav;
+  /* border: 1px solid red; */
+}
+
+header .gridCont {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas:
+    'logo login'
+    'nav nav';
+}
+
+/* End Grid Area */
+
+header div,
+#about div {
+  max-width: 1080px;
+  align-self: center;
+}
+
+header img {
+  max-height: 3em;
+  justify-self: start;
+  align-self: center;
+  margin-bottom: 0.5em;
+}
+
+header button {
+  max-width: min-content;
+  justify-self: end;
+  align-self: center;
+  margin-bottom: 0.5em;
+}
+
 nav {
-  margin: 1em;
+  margin-bottom: 1em;
+  padding-top: 1em;
+  border-top: 1px solid var(--lightBlue);
 }
 
 nav ul {
@@ -121,21 +163,34 @@ nav a {
   border-bottom: 1px solid var(--lightBlue);
 }
 
+header > div,
 section > div {
-  margin: 1em 0.5em;
+  margin: 1em auto;
 }
 
 #about img {
   width: 100%;
+  max-width: 500px;
   border-radius: 0.5em;
   box-shadow: 1px 2px 5px var(--lightBlue);
+  justify-self: center;
+}
+
+#about > div > div {
+  max-width: 500px;
+  justify-self: center;
+  /* border: 1px solid red; */
 }
 
 /* Calendar Styling */
 
 .calendarContainer {
   /* border: 1px solid red; */
+  max-width: fit-content;
+  max-height: fit-content;
   box-shadow: 0px 2px 5px var(--lightBlue);
+  justify-self: center;
+  margin: 1em auto;
 }
 
 #calendar ul {
@@ -241,6 +296,8 @@ section > div {
   border: 1px solid var(--lightblue);
   border-radius: 10px;
   box-shadow: 5px 5px 15px var(--lightBlue);
+  max-width: 450px;
+  margin: auto;
   margin-bottom: 1em;
 }
 
@@ -309,4 +366,98 @@ footer button {
   background-color: var(--green);
   border: 1px solid var(--lightGreen);
   width: fit-content;
+}
+
+@media screen and (min-width: 500px) {
+  header .gridCont {
+    /* border: 1px solid blue; */
+    /* display: grid; */
+    grid-template-columns: 1fr auto 1fr;
+    /* grid-template-rows: auto; */
+    grid-area: header;
+    grid-template-areas: 'logo nav login';
+  }
+
+  nav {
+    border-top: none;
+  }
+}
+
+@media screen and (min-width: 825px) {
+  /* Start Grid Area */
+  #about img {
+    grid-area: aboutPic;
+    /* border: 1px solid red; */
+  }
+
+  #about > div > div {
+    grid-area: about;
+  }
+
+  #about .gridCont {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 'about aboutPic';
+  }
+
+  #calendar .gridCont {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #highlight .weaFav {
+    grid-area: weaFav;
+  }
+
+  #highlight .activityImg {
+    grid-area: actImg;
+  }
+
+  #highlight .activitySummary {
+    grid-area: actSum;
+  }
+
+  #highlight .activityContainer {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      'weaFav weaFAv'
+      'actSum actImg';
+  }
+
+  /* End Grid Area */
+  #about img {
+    align-self: center;
+    width: auto;
+    height: 100%;
+  }
+
+  #allActivities {
+    /* border: 1px solid red; */
+    grid-template-columns: repeat(2, minmax(320px, 400px));
+    margin: auto;
+    column-gap: 1em;
+    justify-content: center;
+  }
+
+  .activityContainer {
+    align-items: start;
+  }
+
+  #highlight .activityContainer {
+    border: 1px solid red;
+    width: auto;
+    margin-left: 1em;
+  }
+  #highlight .activitySummary {
+    /* border: 1px solid blue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90%;
+  }
+
+  #highlight .weaFav {
+    /* border: 1px solid red; */
+    width: 185%;
+  }
 }

@@ -11,61 +11,65 @@
     <!-- <script src="backend\server.js" type="module" defer></script> -->
   </head>
   <body>
-    <header class="divider flex" id="mainHeader"></header>
+    <header class="divider" id="mainHeader"></header>
 
     <main>
       <section id="about" class="divider">
-        <div>
+        <div class="gridCont">
           <img
             src="/images/saConference2024.jpg"
             alt="Silly picture in front of Spokane Temple"
           />
-          <h1>Inland NW Singles</h1>
-          <h3>Singles 31+ in Spokane & North Idaho</h3>
-          <p>
-            We are single adults of The Church of Jesus Christ of Latter-day
-            Saints in the Inland Northwest. We are here to make friends and to
-            help each other know we are not alone in this journey of life.
-          </p>
-          <p>All are welcome.</p>
+          <div>
+            <h1>Inland NW Singles</h1>
+            <h3>Singles 31+ in Spokane & North Idaho</h3>
+            <p>
+              We are single adults of The Church of Jesus Christ of Latter-day
+              Saints in the Inland Northwest. We are here to make friends and to
+              help each other know we are not alone in this journey of life.
+            </p>
+            <p>All are welcome.</p>
+          </div>
         </div>
       </section>
 
       <section id="calendar" class="divider">
         <h2 class="center">Calendar</h2>
 
-        <div class="calendarContainer flexColumn">
-          <div class="calendarHeader">
-            <p class="calendarCurrentDate"></p>
-            <div class="calendarNav flexRow">
-              <span id="calendarPrev">&#8249;</span>
-              <span id="calendarNext">&#8250;</span>
+        <div class="gridCont">
+          <div class="calendarContainer">
+            <div class="calendarHeader">
+              <p class="calendarCurrentDate"></p>
+              <div class="calendarNav flexRow">
+                <span id="calendarPrev">&#8249;</span>
+                <span id="calendarNext">&#8250;</span>
+              </div>
+            </div>
+
+            <div class="calendarBody">
+              <ul class="calendarDays">
+                <li>Sun</li>
+                <li>Mon</li>
+                <li>Tue</li>
+                <li>Wed</li>
+                <li>Thu</li>
+                <li>Fri</li>
+                <li>Sat</li>
+              </ul>
+              <ul class="calendarDates"></ul>
             </div>
           </div>
 
-          <div class="calendarBody">
-            <ul class="calendarDays">
-              <li>Sun</li>
-              <li>Mon</li>
-              <li>Tue</li>
-              <li>Wed</li>
-              <li>Thu</li>
-              <li>Fri</li>
-              <li>Sat</li>
-            </ul>
-            <ul class="calendarDates"></ul>
+          <div>
+            <!-- <h3 class="center">Highlight</h3> -->
+            <div id="highlight"></div>
           </div>
-        </div>
-
-        <div>
-          <!-- <h3 class="center">Highlight</h3> -->
-          <div id="highlight"></div>
         </div>
       </section>
 
       <section id="activities" class="divider">
         <h2 class="center">Activities</h2>
-        <div id="allActivities"></div>
+        <div id="allActivities" class="gridCont"></div>
       </section>
 
       <section id="newsletter" class="divider">
