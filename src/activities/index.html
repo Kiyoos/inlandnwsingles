@@ -18,10 +18,9 @@
         <h2>Add Activity</h2>
         <section class="checkoutForm">
           <form name="checkout" class="gridCont">
-
             <fieldset>
               <legend>Activity Details</legend>
-  
+
               <label for="actTitle">Activity Title</label><br />
               <input
                 name="actTitle"
@@ -30,15 +29,24 @@
                 required
               /><br />
               <label for="startTime">Start Time</label><br />
-              <input name="startTime" id="startTime" placeholder="12/12/2024 7:00pm" required /><br />
+              <input
+                name="startTime"
+                id="startTime"
+                placeholder="12/12/2024 7:00pm"
+                required
+              /><br />
               <label for="imgSource">Activity Flyer</label><br />
-              <input name="code" id="code" placeholder="/images/activityDecember.jpg" required />
-              
+              <input
+                name="code"
+                id="code"
+                placeholder="/images/activityDecember.jpg"
+                required
+              />
             </fieldset>
 
             <fieldset>
               <legend>Location</legend>
-  
+
               <div class="actAddress">
                 <label for="locName">Location Name</label><br />
                 <input
@@ -59,20 +67,36 @@
                 />
                 <br />
                 <label for="city">City</label><br />
-                <input type="text" name="city" id="city" placeholder="Spokane" required /><br />
+                <input
+                  type="text"
+                  name="city"
+                  id="city"
+                  placeholder="Spokane"
+                  required
+                /><br />
                 <label for="state">State</label><br />
-                <input type="text" name="state" id="state" placeholder="WA" required /><br />
+                <input
+                  type="text"
+                  name="state"
+                  id="state"
+                  placeholder="WA"
+                  required
+                /><br />
                 <label for="zip">Zip</label><br />
-                <input type="number" name="zip" id="zip" placeholder="99203" required />
+                <input
+                  type="number"
+                  name="zip"
+                  id="zip"
+                  placeholder="99203"
+                  required
+                />
               </div>
             </fieldset>
-            
-           
+
             <button id="checkoutSubmit" type="submit">Submit</button>
           </form>
         </section>
       </section>
-
     </main>
 
     <footer id="mainFooter" class="flexRow"></footer>
