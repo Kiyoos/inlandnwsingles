@@ -1,10 +1,8 @@
-import { fetchActivities, activityList } from './activities';
-import calendar from './calendar';
+import buildHome from './buildHome';
+// import { fetchActivity } from './storage';
 import { loadHeaderFooter, serverDeploy } from './utils.mjs';
 
-fetchActivities();
 loadHeaderFooter();
-calendar();
-activityList();
-
+buildHome();
 // serverDeploy();
+// fetchActivity('674a263c1bf98025d8fde91a');

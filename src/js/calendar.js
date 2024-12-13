@@ -1,4 +1,4 @@
-import { actEvent, actStorage, fetchActivities } from './activities';
+import { actEvent, actEventClear, actCalStorage } from './actMaintenance';
 import { getLocalStorage } from './utils.mjs';
 
 let date = new Date();
@@ -66,7 +66,7 @@ export function formatTime(date) {
 }
 
 // Function to generate the calendar
-export default function calendar() {
+export default async function calendar() {
   // Get the first day of the month
   let dayone = new Date(year, month, 1).getDay();
 
@@ -79,9 +79,9 @@ export default function calendar() {
   // Get the last date of the previous month
   let monthlastdate = new Date(year, month, 0).getDate();
 
-  actStorage();
+  await actCalStorage();
   const actDates = getLocalStorage('act-cal');
-  console.log(actDates);
+  // console.log(actDates);
 
   // Variable to store the generated calendar HTML
   let lit = '';
@@ -98,12 +98,14 @@ export default function calendar() {
     let isToday = '';
     let hasAct = '';
     let actId = '';
+    let noAct = ' noAct';
     if (
       i === date.getDate() &&
       month === new Date().getMonth() &&
       year === new Date().getFullYear()
     ) {
       isToday = 'active';
+      noAct = '';
     }
     // Check if date has activity
     if (
@@ -111,11 +113,12 @@ export default function calendar() {
       actDates.find((aMonth) => aMonth.actMonth === month)
     ) {
       actId = actDates[d].id;
-      hasAct = 'hasAct';
+      hasAct = ' hasAct';
+      noAct = '';
       d++;
     }
 
-    lit += `<li class="${isToday} ${hasAct}" data-id="${actId}">${i}</li>`;
+    lit += `<li class="${isToday}${hasAct}${noAct}" data-id="${actId}">${i}</li>`;
   }
 
   // Loop to add the first dates of the next month
@@ -129,6 +132,7 @@ export default function calendar() {
   // update the HTML of the dates element with the generated calendar
   day.innerHTML = lit;
   actEvent();
+  actEventClear();
 }
 
 // Attach a click event listener to each icon

@@ -3,7 +3,7 @@ import { getDb } from '../db/connect.js';
 
 // Get all activities
 export async function getAllActivities(req, res) {
-  console.log('getAllActivities is called');
+  // console.log('getAllActivities is called');
   try {
     // console.log('getAllActivities try section is called');
     let db = await getDb();

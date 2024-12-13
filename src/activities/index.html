@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inland NW Singles</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="icon" type="image/png" href="./images/mountains.png" />
+    <!--NS added favicon-->
+    <script src="../js/activities.js" type="module" defer></script>
+    <!-- <script src="backend\server.js" type="module" defer></script> -->
+  </head>
+  <body>
+    <header class="divider" id="mainHeader"></header>
+
+    <main>
+      <section id="addAct" class="divider">
+        <h2>Add Activity</h2>
+        <section class="checkoutForm">
+          <form name="checkout" class="gridCont">
+
+            <fieldset>
+              <legend>Activity Details</legend>
+  
+              <label for="actTitle">Activity Title</label><br />
+              <input
+                name="actTitle"
+                id="actTitle"
+                placeholder="Christmas Dinner & Dance"
+                required
+              /><br />
+              <label for="startTime">Start Time</label><br />
+              <input name="startTime" id="startTime" placeholder="12/12/2024 7:00pm" required /><br />
+              <label for="imgSource">Activity Flyer</label><br />
+              <input name="code" id="code" placeholder="/images/activityDecember.jpg" required />
+              
+            </fieldset>
+
+            <fieldset>
+              <legend>Location</legend>
+  
+              <div class="actAddress">
+                <label for="locName">Location Name</label><br />
+                <input
+                  type="text"
+                  name="street"
+                  id="street"
+                  placeholder="Spokane Stake Center"
+                  required
+                />
+                <br />
+                <label for="street">Street</label><br />
+                <input
+                  type="text"
+                  name="street"
+                  id="street"
+                  placeholder="1620 E 29th Ave"
+                  required
+                />
+                <br />
+                <label for="city">City</label><br />
+                <input type="text" name="city" id="city" placeholder="Spokane" required /><br />
+                <label for="state">State</label><br />
+                <input type="text" name="state" id="state" placeholder="WA" required /><br />
+                <label for="zip">Zip</label><br />
+                <input type="number" name="zip" id="zip" placeholder="99203" required />
+              </div>
+            </fieldset>
+            
+           
+            <button id="checkoutSubmit" type="submit">Submit</button>
+          </form>
+        </section>
+      </section>
+
+    </main>
+
+    <footer id="mainFooter" class="flexRow"></footer>
+  </body>
+</html>
