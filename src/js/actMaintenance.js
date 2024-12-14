@@ -38,9 +38,9 @@ export function activityTemplate(data) {
   // creates the activity cards
   return `
   <div class="gridCont activityContainer">
-    <div class="weaFav flexRow">
-      <span id="weather" class="flexRow"></span>
-      <p class="activityFavorite" data-id="${data._id}">${star}</p>
+    <div class="weaFav gridCont">
+      <span id="weather"></span>
+      <span class="activityFavorite" data-id="${data._id}">${star}</span>
     </div>
     <img
       class="activityImg"

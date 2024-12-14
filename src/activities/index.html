@@ -17,7 +17,12 @@
       <section id="addAct" class="divider">
         <section class="activityForm">
           <h2>Add Activity</h2>
-          <form name="createActivity" class="gridCont" action="">
+          <form
+            name="createActivity"
+            class="gridCont"
+            action="http://localhost:3000/activities"
+            method="post"
+          >
             <fieldset>
               <legend>Activity Details</legend>
               <!-- placeholder <-> value  -->
@@ -45,12 +50,7 @@
                 required
               /><br />
               <label for="actImg">Activity Flyer</label><br />
-              <input
-                name="actImg"
-                id="actImg"
-                value="/images/default.jpg"
-                required
-              />
+              <input name="actImg" id="actImg" value="/images/default.jpg" />
             </fieldset>
 
             <fieldset>

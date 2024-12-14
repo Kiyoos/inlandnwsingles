@@ -4,13 +4,31 @@ import { ObjectId } from 'mongodb';
 export function saveActivity(req, res, next) {
   const validationRule = {
     // "required" makes the field required. Just leave off if field is optional
-    hikeName: 'required|string',
-    location: 'required|string',
-    type: 'required|string',
-    miles: 'required|numeric',
-    elevationStart: 'integer',
-    elevationEnd: 'integer',
-    elevationGain: 'required|integer',
+    title: 'required|string',
+    dateCreated: 'required|date',
+    startTime: 'required|date',
+    endTime: 'date',
+    description: 'string',
+    children: 'boolean',
+    location: {
+      name: 'required|string',
+      street: 'required|string',
+      city: 'required|string',
+      state: 'required|string',
+      zip: 'required|int32',
+    },
+    creator: {
+      name: 'string',
+      phone: 'string',
+      email: 'string',
+      stake: 'string',
+    },
+    image: {
+      src: 'string',
+      alt: 'string',
+    },
+    category: 'string',
+    favorite: 'boolean',
   };
   validator(req.body, validationRule, {}, (err, status) => {
     if (!status) {
@@ -25,27 +43,6 @@ export function saveActivity(req, res, next) {
   });
 }
 
-// const saveFish = (req, res, next) => {
-//   const validationRule = {
-//     type: 'required|string',
-//     length: 'required|numeric',
-//     weight: 'required|integer',
-//     date: 'required|string',
-//     location: 'required|string'
-//   };
-//   validator(req.body, validationRule, {}, (err, status) => {
-//     if (!status) {
-//       res.status(412).send({
-//         success: false,
-//         message: 'Validation failed',
-//         data: err
-//       });
-//     } else {
-//       next();
-//     }
-//   });
-// };
-
 export function checkId(req, res, next) {
   // checks to see if the id entered is a valid Mongodb ID
   if (!ObjectId.isValid(req.params.id)) {
@@ -59,9 +56,3 @@ export function checkId(req, res, next) {
 // app.get('/profile', requiresAuth(), (req, res) => {
 //   res.send(JSON.stringify(req.oidc.user));
 // });
-
-// export default {
-//   saveHike,
-//   saveFish,
-//   checkId
-// };

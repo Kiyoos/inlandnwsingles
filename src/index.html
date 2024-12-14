@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inland NW Singles</title>
     <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="icon" type="image/png" href="./images/mountains.png" />
+    <link rel="icon" type="image/png" href="../images/mountains.png" />
     <!--NS added favicon-->
     <script src="./js/main.js" type="module" defer></script>
     <!-- <script src="backend\server.js" type="module" defer></script> -->
@@ -73,11 +73,17 @@
         <h2 class="center">Newsletter</h2>
         <div>
           <p>Click here to sign up for our newsletter.</p>
-          <button type="button">Newsletter</button>
+          <button
+            id="subscribe"
+            onclick="window.location.href='./newsletter/index.html'"
+            type="button"
+          >
+            Newsletter
+          </button>
         </div>
       </section>
     </main>
 
-    <footer id="mainFooter" class="flexRow"></footer>
+    <footer id="mainFooter" class="gridCont"></footer>
   </body>
 </html>

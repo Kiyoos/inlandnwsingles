@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inland NW Singles</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="icon" type="image/png" href="./images/mountains.png" />
+    <!--NS added favicon-->
+    <script src="../js/newsletter.js" type="module" defer></script>
+    <!-- <script src="backend\server.js" type="module" defer></script> -->
+  </head>
+  <body>
+    <header class="divider" id="mainHeader"></header>
+
+    <main>
+      <section id="addAct" class="divider">
+        <section class="activityForm">
+          <h2>Newsletter Signup</h2>
+          <form name="newsletter" class="gridCont">
+            <fieldset>
+              <legend>Subscribe</legend>
+              <!-- placeholder <-> value  -->
+              <label for="name">Full Name</label><br />
+              <input name="name" id="name" value="Jane Doe" required /><br />
+              <label for="email">Email</label><br />
+              <input
+                name="email"
+                type="email"
+                id="email"
+                value="janedoe@email.com"
+                required
+              />
+            </fieldset>
+
+            <button id="nlSubmit" type="submit">Submit</button>
+          </form>
+        </section>
+      </section>
+    </main>
+
+    <footer id="mainFooter" class="flexRow"></footer>
+  </body>
+</html>

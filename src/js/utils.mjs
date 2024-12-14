@@ -50,3 +50,21 @@ export function setLocalStorage(key, data) {
 export function serverDeploy() {
   fetch(import.meta.env.VITE_SERVER_DEPLOY);
 }
+
+export function convertToJson(res) {
+  const json = res.json();
+  if (res.ok) {
+    return json;
+  } else {
+    throw { name: 'servicesError', message: json };
+  }
+}
+
+export function formDataToJSON(formElement) {
+  const formData = new FormData(formElement),
+    convertedJSON = {};
+  formData.forEach(function (value, key) {
+    convertedJSON[key] = value;
+  });
+  return convertedJSON;
+}

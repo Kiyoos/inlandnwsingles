@@ -1,5 +1,5 @@
-import { addActEvent } from './actCreate';
+import { newsletterEvent } from './newsInfo';
 import { loadHeaderFooter } from './utils.mjs';
 
 loadHeaderFooter();
-// addActEvent();
+newsletterEvent();

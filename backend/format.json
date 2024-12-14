@@ -1,0 +1,28 @@
+{
+  "_id": { "$oid": "674a263c1bf98025d8fde91a" },
+  "title": "Christmas Dinner & Dance",
+  "dateCreated": { "$date": { "$numberLong": "1732878854796" } },
+  "startTime": { "$date": { "$numberLong": "1733596200796" } },
+  "endTime": { "$date": { "$numberLong": "1733596200796" } },
+  "description": "Dinner and Dance, Dinner starts at 6:30pm, Hawaiian Program at 7:30pm, Dance at 8:00pm.",
+  "children": true,
+  "location": {
+    "name": "Spokane Stake Center",
+    "street": "1620 E 29th Ave",
+    "city": "Spokane",
+    "state": "WA",
+    "zip": { "$numberInt": "99203" }
+  },
+  "creator": {
+    "name": "John Doe",
+    "phone": "509-555-1234",
+    "email": "contact@email.com",
+    "stake": "Spokane"
+  },
+  "image": {
+    "src": "/images/activityDecember.jpg",
+    "alt": "December Activity"
+  },
+  "category": "Activities",
+  "favorite": false
+}

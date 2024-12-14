@@ -1,24 +1,5 @@
+import { convertToJson, formDataToJSON } from './utils.mjs';
 const baseURL = import.meta.env.VITE_BASE_URL;
-
-function convertToJson(res) {
-  const json = res.json();
-  if (res.ok) {
-    return json;
-  } else {
-    throw { name: 'servicesError', message: json };
-  }
-}
-
-function formDataToJSON(formElement) {
-  const formData = new FormData(formElement),
-    convertedJSON = {};
-
-  formData.forEach(function (value, key) {
-    convertedJSON[key] = value;
-  });
-
-  return convertedJSON;
-}
 
 export function addActEvent() {
   document.forms['createActivity'].addEventListener('submit', (e) => {
@@ -27,12 +8,11 @@ export function addActEvent() {
     console.log(e.target);
   });
 }
-// got from userInfo() in sleepoutside
 
 export async function actInfo(form) {
   const json = formDataToJSON(form);
   const startTime = `${json.startDate}T${json.startTime}:00.000Z`;
-  console.log(startTime);
+  // console.log(startTime);
   console.log(json);
   const actInfo = {
     title: json.actTitle,
@@ -68,5 +48,5 @@ export async function postActivity(payload) {
     },
     body: JSON.stringify(payload),
   };
-  return await fetch(baseURL + '/activities/', options).then(convertToJson);
+  return await fetch(baseURL + '/activities', options).then(convertToJson);
 }
