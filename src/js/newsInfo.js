@@ -35,7 +35,7 @@ export async function postNewsInfo(payload) {
       },
       body: JSON.stringify(payload),
     };
-    return await fetch(baseURL + '/newsletter/', options).then(convertToJson);
+    return await fetch(baseURL + '/newsletter', options).then(convertToJson);
   } catch (error) {
     console.log(error);
   }
