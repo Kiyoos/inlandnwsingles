@@ -374,8 +374,14 @@ footer button {
 }
 
 /* Start of Adding Activities Styling */
+
 input {
   width: 100%;
+}
+
+#addAct > section {
+  max-width: 450px;
+  margin: auto;
 }
 
 #addAct button {

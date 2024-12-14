@@ -62,7 +62,7 @@ export function activityTemplate(data) {
 export async function actCalStorage() {
   const actList = await getLocalStorage('act-list');
   // console.log('actCalStorage');
-  // console.log(actList);
+  console.log(actList);
   // make array of activity dates and ids
   let actDates = [];
   actList.map((data) => {

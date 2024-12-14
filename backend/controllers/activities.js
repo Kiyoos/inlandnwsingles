@@ -51,11 +51,11 @@ export async function createActivity(req, res) {
   try {
     const activity = {
       title: req.body.title,
-      dateCreated: req.body.dateCreated,
+      // dateCreated: req.body.dateCreated,
       startTime: req.body.startTime,
-      endTime: req.body.endTime,
-      description: req.body.description,
-      children: req.body.children,
+      // endTime: req.body.endTime,
+      // description: req.body.description,
+      // children: req.body.children,
       location: {
         name: req.body.name,
         street: req.body.street,
@@ -63,12 +63,16 @@ export async function createActivity(req, res) {
         state: req.body.state,
         zip: req.body.zip,
       },
-      creator: {
-        name: req.body.name,
-        phone: req.body.phone,
-        email: req.body.email,
-        stake: req.body.email,
+      image: {
+        src: req.body.src,
+        alt: req.body.alt,
       },
+      // creator: {
+      //   name: req.body.name,
+      //   phone: req.body.phone,
+      //   email: req.body.email,
+      //   stake: req.body.email,
+      // },
     };
     const result = await getDb()
       .db('inlandnwsingles')
@@ -87,6 +91,28 @@ export async function createActivity(req, res) {
     res.status(500).json({ message: err.message });
   }
 }
+
+// const activity = {
+//   title: req.body.title,
+//   dateCreated: req.body.dateCreated,
+//   startTime: req.body.startTime,
+//   endTime: req.body.endTime,
+//   description: req.body.description,
+//   children: req.body.children,
+//   location: {
+//     name: req.body.name,
+//     street: req.body.street,
+//     city: req.body.city,
+//     state: req.body.state,
+//     zip: req.body.zip,
+//   },
+//   creator: {
+//     name: req.body.name,
+//     phone: req.body.phone,
+//     email: req.body.email,
+//     stake: req.body.email,
+//   },
+// };
 
 // Put/Update an activity
 export async function updateActivity(req, res) {
