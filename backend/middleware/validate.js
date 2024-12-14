@@ -2,14 +2,15 @@ import validator from './validator.js';
 import { ObjectId } from 'mongodb';
 
 export function saveActivity(req, res, next) {
+  console.log('saveActivity called');
   const validationRule = {
     // "required" makes the field required. Just leave off if field is optional
     title: 'required|string',
-    dateCreated: 'required|date',
+    // dateCreated: 'required|date',
     startTime: 'required|date',
-    endTime: 'date',
-    description: 'string',
-    children: 'boolean',
+    // endTime: 'date',
+    // description: 'string',
+    // children: 'boolean',
     location: {
       name: 'required|string',
       street: 'required|string',
@@ -17,18 +18,18 @@ export function saveActivity(req, res, next) {
       state: 'required|string',
       zip: 'required|int32',
     },
-    creator: {
-      name: 'string',
-      phone: 'string',
-      email: 'string',
-      stake: 'string',
-    },
+    // creator: {
+    //   name: 'string',
+    //   phone: 'string',
+    //   email: 'string',
+    //   stake: 'string',
+    // },
     image: {
       src: 'string',
       alt: 'string',
     },
-    category: 'string',
-    favorite: 'boolean',
+    // category: 'string',
+    // favorite: 'boolean',
   };
   validator(req.body, validationRule, {}, (err, status) => {
     if (!status) {

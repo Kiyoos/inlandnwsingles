@@ -31,12 +31,16 @@ export async function fetchActivity(actId) {
 
 export async function postActivity(activity) {
   // console.log(user);
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(activity),
-  };
-  return await fetch(baseURL + 'activities', options).then(convertToJson);
+  try {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(activity),
+    };
+    return await fetch(baseURL + 'activities', options).then(convertToJson);
+  } catch (error) {
+    console.log(error);
+  }
 }

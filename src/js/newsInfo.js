@@ -27,12 +27,16 @@ export async function subscribe(form) {
 
 export async function postNewsInfo(payload) {
   console.log('payload', payload);
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
-  };
-  return await fetch(baseURL + '/newsletter/', options).then(convertToJson);
+  try {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    };
+    return await fetch(baseURL + '/newsletter/', options).then(convertToJson);
+  } catch (error) {
+    console.log(error);
+  }
 }

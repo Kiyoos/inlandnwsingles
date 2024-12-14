@@ -25,11 +25,9 @@ h4,
 nav a,
 .calendarCurrentDate {
   font-family: 'Belleza', Helvetica, Arial, Lucida, sans-serif;
-  /* color: var(--blue); */
 }
 
 .flexColumn {
-  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -73,22 +71,20 @@ button {
   background-color: var(--blue);
   box-shadow: 0px 2px 5px var(--lightBlue);
 }
+
 /* Start Grid Area  */
 
 /* Header Styling */
 header img {
   grid-area: logo;
-  /* border: 1px solid red; */
 }
 
 header button {
   grid-area: login;
-  /* border: 1px solid red; */
 }
 
 header nav {
   grid-area: nav;
-  /* border: 1px solid red; */
 }
 
 header .gridCont {
@@ -172,7 +168,6 @@ section > div {
 #about > div > div {
   max-width: 500px;
   justify-self: center;
-  /* border: 1px solid red; */
 }
 
 /* Calendar Styling */
@@ -286,7 +281,6 @@ section > div {
 
 #allActivities,
 #allFavorites {
-  /* border: 1px solid red; */
   justify-content: center;
   align-items: flex-start;
 }
@@ -309,13 +303,11 @@ section > div {
 }
 
 .activityContainer div:last-child {
-  /* border: 1px solid red; */
   margin: 1rem;
 }
 
 .weaFav {
   grid-template-columns: 1fr 1fr;
-  /* justify-content: space-between; */
   height: 50px;
   width: 100%;
   padding: 5px;
@@ -325,13 +317,7 @@ section > div {
   width: 100%;
 }
 
-/* .weaFav {
-  margin: 0;
-  justify-content: space-around;
-} */
-
 .activityFavorite {
-  /* border: 1px solid blue; */
   margin: 0;
   height: 50px;
   font-size: 4rem;
@@ -341,7 +327,6 @@ section > div {
 }
 
 .activityImg {
-  /* border: 1px solid red; */
   width: 100%;
   margin: 5% auto;
 }
@@ -355,9 +340,7 @@ section > div {
 }
 
 .activitySummary p {
-  /* border: 1px solid red; */
   margin: 0.5rem 0;
-  /* text-align: center; */
 }
 
 .building {
@@ -368,18 +351,15 @@ section > div {
 .activitySummary > button {
   border: 1px solid var(--lightGreen);
   background-color: var(--green);
-  /* margin-left: 30%; */
 }
 /* end of Activities */
 
 /* Newsletter Styles */
-
 #newsletter * {
   text-align: center;
 }
 
 /* Footer Styles */
-
 footer {
   grid-template-columns: 3fr 1fr;
   margin-top: 1rem;
@@ -395,7 +375,6 @@ footer button {
 }
 
 /* Start of Adding Activities Styling */
-
 input {
   width: 100%;
 }
@@ -414,8 +393,8 @@ input {
 legend {
   font-weight: 600;
 }
-
 /* End of Adding Activities Styling */
+
 @media screen and (max-width: 825px) {
   #highlight .activityContainer {
     max-width: 300px;
@@ -425,10 +404,7 @@ legend {
 
 @media screen and (min-width: 500px) {
   header .gridCont {
-    /* border: 1px solid blue; */
-    /* display: grid; */
     grid-template-columns: 1fr auto 1fr;
-    /* grid-template-rows: auto; */
     grid-area: header;
     grid-template-areas: 'logo nav login';
     justify-content: center;
@@ -443,7 +419,6 @@ legend {
   /* Start Grid Area */
   #about img {
     grid-area: aboutPic;
-    /* border: 1px solid red; */
   }
 
   #about > div > div {
@@ -482,8 +457,8 @@ legend {
       'weaFav weaFav'
       'actSum actImg';
   }
-
   /* End Grid Area */
+
   #about img {
     align-self: center;
     width: auto;
@@ -496,14 +471,12 @@ legend {
   }
 
   #highlight .activityContainer {
-    /* border: 1px solid red; */
     width: 100%;
     margin: 0;
     height: 100%;
   }
 
   #highlight .activitySummary {
-    /* border: 1px solid blue; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;

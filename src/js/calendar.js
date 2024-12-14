@@ -68,96 +68,104 @@ export function formatTime(date) {
 // Function to generate the calendar
 export default async function calendar() {
   // Get the first day of the month
-  let dayone = new Date(year, month, 1).getDay();
+  try {
+    let dayone = new Date(year, month, 1).getDay();
 
-  // Get the last date of the month
-  let lastdate = new Date(year, month + 1, 0).getDate();
+    // Get the last date of the month
+    let lastdate = new Date(year, month + 1, 0).getDate();
 
-  // Get the day of the last date of the month
-  let dayend = new Date(year, month, lastdate).getDay();
+    // Get the day of the last date of the month
+    let dayend = new Date(year, month, lastdate).getDay();
 
-  // Get the last date of the previous month
-  let monthlastdate = new Date(year, month, 0).getDate();
+    // Get the last date of the previous month
+    let monthlastdate = new Date(year, month, 0).getDate();
 
-  await actCalStorage();
-  const actDates = getLocalStorage('act-cal');
-  // console.log(actDates);
+    await actCalStorage();
+    const actDates = getLocalStorage('act-cal');
+    // console.log(actDates);
 
-  // Variable to store the generated calendar HTML
-  let lit = '';
+    // Variable to store the generated calendar HTML
+    let lit = '';
 
-  // Loop to add the last dates of the previous month
-  for (let i = dayone; i > 0; i--) {
-    lit += `<li class="inactive">${monthlastdate - i + 1}</li>`;
-  }
-
-  // Loop to add the dates of the current month
-  let d = 0;
-  for (let i = 1; i <= lastdate; i++) {
-    // Check if the date is today
-    let isToday = '';
-    let hasAct = '';
-    let actId = '';
-    let noAct = ' noAct';
-    if (
-      i === date.getDate() &&
-      month === new Date().getMonth() &&
-      year === new Date().getFullYear()
-    ) {
-      isToday = 'active';
-      noAct = '';
-    }
-    // Check if date has activity
-    if (
-      actDates.find((day) => day.actDay === i) &&
-      actDates.find((aMonth) => aMonth.actMonth === month)
-    ) {
-      actId = actDates[d].id;
-      hasAct = ' hasAct';
-      noAct = '';
-      d++;
+    // Loop to add the last dates of the previous month
+    for (let i = dayone; i > 0; i--) {
+      lit += `<li class="inactive">${monthlastdate - i + 1}</li>`;
     }
 
-    lit += `<li class="${isToday}${hasAct}${noAct}" data-id="${actId}">${i}</li>`;
+    // Loop to add the dates of the current month
+    let d = 0;
+    for (let i = 1; i <= lastdate; i++) {
+      // Check if the date is today
+      let isToday = '';
+      let hasAct = '';
+      let actId = '';
+      let noAct = ' noAct';
+      if (
+        i === date.getDate() &&
+        month === new Date().getMonth() &&
+        year === new Date().getFullYear()
+      ) {
+        isToday = 'active';
+        noAct = '';
+      }
+      // Check if date has activity
+      if (
+        actDates.find((day) => day.actDay === i) &&
+        actDates.find((aMonth) => aMonth.actMonth === month)
+      ) {
+        actId = actDates[d].id;
+        hasAct = ' hasAct';
+        noAct = '';
+        d++;
+      }
+
+      lit += `<li class="${isToday}${hasAct}${noAct}" data-id="${actId}">${i}</li>`;
+    }
+
+    // Loop to add the first dates of the next month
+    for (let i = dayend; i < 6; i++) {
+      lit += `<li class="inactive">${i - dayend + 1}</li>`;
+    }
+
+    // Update the text of the current date element with the formatted current month and year
+    currdate.innerText = `${months[month]} ${year}`;
+
+    // update the HTML of the dates element with the generated calendar
+    day.innerHTML = lit;
+    actEvent();
+    actEventClear();
+  } catch (error) {
+    console.log(error);
   }
-
-  // Loop to add the first dates of the next month
-  for (let i = dayend; i < 6; i++) {
-    lit += `<li class="inactive">${i - dayend + 1}</li>`;
-  }
-
-  // Update the text of the current date element with the formatted current month and year
-  currdate.innerText = `${months[month]} ${year}`;
-
-  // update the HTML of the dates element with the generated calendar
-  day.innerHTML = lit;
-  actEvent();
-  actEventClear();
 }
 
 // Attach a click event listener to each icon
 preNexIcons.forEach((icon) => {
   // When an icon is clicked
-  icon.addEventListener('click', () => {
-    // Check if the icon is "calendarPrev" or "calendarNext"
-    month = icon.id === 'calendarPrev' ? month - 1 : month + 1;
+  try {
+    icon.addEventListener('click', () => {
+      // Check if the icon is "calendarPrev" or "calendarNext"
+      month = icon.id === 'calendarPrev' ? month - 1 : month + 1;
 
-    // Check if the month is out of range
-    if (month < 0 || month > 11) {
-      // Set the date to the first day of the month with the new year
-      date = new Date(year, month, new Date().getDate());
+      // Check if the month is out of range
+      if (month < 0 || month > 11) {
+        // Set the date to the first day of the month with the new year
+        date = new Date(year, month, new Date().getDate());
 
-      // Set the year to the new year
-      year = date.getFullYear();
+        // Set the year to the new year
+        year = date.getFullYear();
 
-      // Set the month to the new month
-      month = date.getMonth();
-    } else {
-      // Set the date to the current date
-      date = new Date();
-    }
+        // Set the month to the new month
+        month = date.getMonth();
+      } else {
+        // Set the date to the current date
+        date = new Date();
+      }
 
-    // Call the calendar function to update the calendar display
-    calendar();
-  });
+      // Call the calendar function to update the calendar display
+      calendar();
+    });
+  } catch (error) {
+    console.log(error);
+  }
 });

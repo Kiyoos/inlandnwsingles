@@ -5,24 +5,30 @@ import fetchWeather from './weather';
 
 export async function highlight(actId) {
   // console.log(actId);
-  const data = getLocalStorage('act-list');
-  const index = data.findIndex((id) => id._id === actId);
-  // console.log(index);
-  const calDivEl = document.querySelector('#calendar>div');
-  calDivEl.classList.add('gridCont');
-  const highlightEl = document.getElementById('highlight');
-  // console.log(data[index]);
-  highlightEl.innerHTML = activityTemplate(data[index]);
-  fetchWeather(data[index].location.zip);
-  favEvent();
+  try {
+    const data = getLocalStorage('act-list');
+    const index = data.findIndex((id) => id._id === actId);
+    // console.log(index);
+    const calDivEl = document.querySelector('#calendar>div');
+    calDivEl.classList.add('gridCont');
+    const highlightEl = document.getElementById('highlight');
+    // console.log(data[index]);
+    highlightEl.innerHTML = activityTemplate(data[index]);
+    fetchWeather(data[index].location.zip);
+    favEvent();
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export async function activityList() {
-  const data = getLocalStorage('act-list');
-  // console.log(data);
-  const allActivitiesEl = document.getElementById('allActivities');
-  allActivitiesEl.innerHTML = data.map(activityTemplate).join('');
-  // favEvent();
+  try {
+    const data = getLocalStorage('act-list');
+    const allActivitiesEl = document.getElementById('allActivities');
+    allActivitiesEl.innerHTML = data.map(activityTemplate).join('');
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export function activityTemplate(data) {
@@ -60,28 +66,30 @@ export function activityTemplate(data) {
 }
 
 export async function actCalStorage() {
-  const actList = await getLocalStorage('act-list');
-  // console.log('actCalStorage');
-  console.log(actList);
-  // make array of activity dates and ids
-  let actDates = [];
-  actList.map((data) => {
-    const date = convertDate(data.startTime);
-    const actDay = date.getDate();
-    const actMonth = date.getMonth();
-    const actId = {
-      id: data._id,
-      title: data.title,
-      actDay: actDay,
-      actMonth: actMonth,
-    };
-    actDates.push(actId);
-  });
+  try {
+    const actList = await getLocalStorage('act-list');
+    console.log(actList);
+    // make array of activity dates and ids
+    let actDates = [];
+    actList.map((data) => {
+      const date = convertDate(data.startTime);
+      const actDay = date.getDate();
+      const actMonth = date.getMonth();
+      const actId = {
+        id: data._id,
+        title: data.title,
+        actDay: actDay,
+        actMonth: actMonth,
+      };
+      actDates.push(actId);
+    });
 
-  actDates.sort((a, b) => a.actDay - b.actDay);
+    actDates.sort((a, b) => a.actDay - b.actDay);
 
-  setLocalStorage('act-cal', actDates);
-  // console.log(actDates);
+    setLocalStorage('act-cal', actDates);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function actClear() {

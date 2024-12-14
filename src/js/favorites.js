@@ -1,8 +1,6 @@
 import { activityTemplate } from './actMaintenance';
 import { getLocalStorage, setLocalStorage } from './utils.mjs';
 
-// let actFavList = [];
-
 export function favoriteSection() {
   const actFavList = getLocalStorage('act-fav');
   if (actFavList == null || actFavList.length == 0) {
@@ -24,53 +22,54 @@ export function favoriteSection() {
   sect.appendChild(div);
   let parentEl = actEl.parentNode;
   parentEl.insertBefore(sect, actEl);
-
-  // const allFavEl = document.getElementById('allFavorites');
-  // allFavEl.innerHTML = actFavList.map(activityTemplate).join('');
-
-  // setTimeout(favEvent, 100);
 }
 
 function favoriteToggle(favId) {
-  const actList = getLocalStorage('act-list');
-  let actFavList = getLocalStorage('act-fav');
-  const index = actList.findIndex((id) => id._id === favId);
-  console.log('actList from favoriteOn');
-  console.log(actList[index].title);
-  actList[index].favorite = true;
+  try {
+    const actList = getLocalStorage('act-list');
+    let actFavList = getLocalStorage('act-fav');
+    const index = actList.findIndex((id) => id._id === favId);
+    console.log('actList from favoriteOn');
+    console.log(actList[index].title);
+    actList[index].favorite = true;
 
-  if (actFavList == null) {
-    const favStart = [actList[index]];
-    setLocalStorage('act-fav', favStart);
-    window.location.reload();
-    return;
-  }
-
-  if (actFavList.find((list) => list._id === favId)) {
-    console.log('already been favorited. remove from favorite list');
-    const indexB = actFavList.findIndex((id) => id._id === favId);
-    actFavList.splice(indexB, 1);
-    console.log(actFavList);
-    if (actFavList.length == 0) {
-      actFavList = [];
+    if (actFavList == null) {
+      const favStart = [actList[index]];
+      setLocalStorage('act-fav', favStart);
+      window.location.reload();
+      return;
     }
 
-    if (actFavList.length > 1) {
-      actFavList.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
+    if (actFavList.find((list) => list._id === favId)) {
+      console.log('already been favorited. remove from favorite list');
+      const indexB = actFavList.findIndex((id) => id._id === favId);
+      actFavList.splice(indexB, 1);
+      console.log(actFavList);
+      if (actFavList.length == 0) {
+        actFavList = [];
+      }
+
+      if (actFavList.length > 1) {
+        actFavList.sort(
+          (a, b) => new Date(a.startTime) - new Date(b.startTime),
+        );
+      }
+      setLocalStorage('act-fav', actFavList);
+      window.location.reload();
+      return;
     }
+
+    actFavList.push(actList[index]);
+    // console.log(actFavList);
+
+    actFavList.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
+
     setLocalStorage('act-fav', actFavList);
+
     window.location.reload();
-    return;
+  } catch (error) {
+    console.log(error);
   }
-
-  actFavList.push(actList[index]);
-  // console.log(actFavList);
-
-  actFavList.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
-
-  setLocalStorage('act-fav', actFavList);
-
-  window.location.reload();
 }
 
 export function favEvent() {

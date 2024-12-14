@@ -48,6 +48,7 @@ export async function getSingleActivity(req, res) {
 
 // Post/Create a new activity
 export async function createActivity(req, res) {
+  console.log('createActivity called');
   try {
     const activity = {
       title: req.body.title,
@@ -63,16 +64,18 @@ export async function createActivity(req, res) {
         state: req.body.state,
         zip: req.body.zip,
       },
-      image: {
-        src: req.body.src,
-        alt: req.body.alt,
-      },
       // creator: {
       //   name: req.body.name,
       //   phone: req.body.phone,
       //   email: req.body.email,
-      //   stake: req.body.email,
+      //   stake: req.body.stake,
       // },
+      image: {
+        src: req.body.src,
+        alt: req.body.alt,
+      },
+      // category: req.body.category,
+      // favorite: req.body.favorite,
     };
     const result = await getDb()
       .db('inlandnwsingles')
@@ -99,24 +102,30 @@ export async function updateActivity(req, res) {
     const userId = new ObjectId(req.params.id);
     const activity = {
       title: req.body.title,
-      dateCreated: req.body.dateCreated,
+      // dateCreated: req.body.dateCreated,
       startTime: req.body.startTime,
-      endTime: req.body.endTime,
-      description: req.body.description,
-      children: req.body.children,
+      // endTime: req.body.endTime,
+      // description: req.body.description,
+      // children: req.body.children,
       location: {
         name: req.body.name,
         street: req.body.street,
         city: req.body.city,
         state: req.body.state,
         zip: req.body.zip,
+        // },
+        // creator: {
+        //   name: req.body.name,
+        //   phone: req.body.phone,
+        //   email: req.body.email,
+        //   stake: req.body.stake,
       },
-      creator: {
-        name: req.body.name,
-        phone: req.body.phone,
-        email: req.body.email,
-        stake: req.body.email,
+      image: {
+        src: req.body.src,
+        alt: req.body.alt,
       },
+      // category: req.body.category,
+      // favorite: req.body.category,
     };
     // .updateOne({_id: userId}) deletes the user id that was entered above
     const result = await getDb()

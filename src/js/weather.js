@@ -1,4 +1,3 @@
-// import 'dotenv/config';
 const apiKey = import.meta.env.VITE_WEATHER_API;
 
 export default async function fetchWeather(zip = 83854) {
