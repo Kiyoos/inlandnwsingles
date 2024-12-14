@@ -379,7 +379,7 @@ input {
   width: 100%;
 }
 
-#addAct > section {
+#addAct > div {
   max-width: 450px;
   margin: auto;
 }
